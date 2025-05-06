@@ -20,9 +20,14 @@ def get_weather() -> None:
 
     if response.status_code == 200:
         data = response.json()
-        print("The weather in Paris: ")
-        print(f"Temperature: {data["current"]["temp_c"]}°C")
-        print(f"Condition: {data["current"]["condition"]["text"]}")
+
+        city = data["location"]["name"]
+        temperature = data["current"]["temp_c"]
+        condition = data["current"]["condition"]["text"]
+
+        print(f"The weather in {city}: ")
+        print(f"Temperature: {temperature}°C")
+        print(f"Condition: {condition}")
 
 
 if __name__ == "__main__":
